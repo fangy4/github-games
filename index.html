@@ -221,6 +221,7 @@
           case KEY.UP:     actions.push(DIR.UP);    handled = true; break;
           case KEY.DOWN:   actions.push(DIR.DOWN);  handled = true; break;
           case KEY.ESC:    lose();                  handled = true; break;
+		  case KEY.SPACE:  rushDown(); handled = true; break;
         }
       }
       else if (ev.keyCode == KEY.SPACE) {
@@ -237,6 +238,8 @@
 
     function play() { hide('start'); reset();          playing = true;  }
     function lose() { show('start'); setVisualScore(); playing = false; }
+	
+	function rushDown() { for(var i=0;i < 20; i++){move(DIR.DOWN)}; };
 
     function setVisualScore(n)      { vscore = n || score; invalidateScore(); }
     function setScore(n)            { score = n; setVisualScore(n);  }
